@@ -1,0 +1,39 @@
+> ENTWURF / DRAFT: design preview, not a live company website. All offers, prices and details are placeholders.
+
+# frontier-design
+
+> Ein-Personen-Studio für Webdesign, Webentwicklung, SEO und Generative Engine
+> Optimization (KI-Sichtbarkeit) in Potsdam, Deutschland. Einsatzgebiet:
+> Potsdam und Berlin. Besonderheit: Websites werden spekulativ fertig
+> vorgebaut; der Kunde zahlt nur, wenn er das Ergebnis übernehmen möchte.
+
+Inhaber und einziger Ansprechpartner: [Name]
+Kontakt: hallo@studio.example
+
+## Leistungen und Preise (netto)
+
+- Fertig gebaute Website (spekulativ vorgebaut, Zahlung nur bei Übernahme): ab 900 €
+- Individuelle Website (gemeinsam geplant und gelauncht): 2.500–6.000 €
+- Hosting & Pflege (Domain, Updates, kleine Änderungen, direkter Support): 39–99 € pro Monat
+- Lokales SEO-Setup (Google Business Profil, On-Page-Basis): ab 400 €
+- KI-Sichtbarkeits-Audit (wie KI-Assistenten das Geschäft heute wahrnehmen): 400–900 €
+- Sichtbarkeits-Retainer (laufende SEO- und GEO-Optimierung mit Reporting): 250–600 € pro Monat
+
+## Arbeitsweise
+
+1. frontier-design baut die neue Website komplett vor, ohne Auftrag.
+2. Der Kunde sieht das fertige Ergebnis unter einem Link.
+3. Nur bei Begeisterung wird übernommen und bezahlt.
+
+## Zielgruppe
+
+Kleine, inhabergeführte Betriebe in Potsdam und Berlin: Handwerk,
+Gastronomie, Praxen und persönliche Dienstleistungen, lokaler Einzelhandel.
+
+## English summary
+
+frontier-design is a one-person web design studio in Potsdam, Germany,
+serving Potsdam and Berlin. It builds websites speculatively — clients only
+pay if they love the result (from €900) — and specializes in Generative
+Engine Optimization: making local businesses visible and citable to AI
+assistants. Contact: hallo@studio.example

@@ -1,0 +1,13 @@
+# Environment files
+.env*
+!.env.example
+
+# Local agent scratch
+.amp/in/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

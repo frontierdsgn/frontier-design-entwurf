@@ -21,3 +21,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Dann http://127.0.0.1:8000/ öffnen. Vor jedem Commit `scripts/gate` ausführen (braucht `gitleaks`, installierbar mit `scripts/install-gitleaks`).
+
+## Lizenz
+
+Code (HTML-Markup, CSS, eigenes JavaScript, Skripte) unter der [MIT-Lizenz](LICENSE); Texte und Bilder der Website unter [CC BY 4.0](LICENSE-content). Mitgelieferte Werke Dritter behalten ihre eigenen Lizenzen: die Schriften unter der SIL Open Font License 1.1, GSAP unter seiner eigenen Lizenz, Lenis und three.js unter MIT. Die Einzelheiten stehen in [NOTICE](NOTICE).

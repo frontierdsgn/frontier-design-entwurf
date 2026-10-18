@@ -9,7 +9,7 @@
 
 ## Map
 - `index.html`, `en/`, `impressum.html`, `datenschutz.html`, `assets/`, `favicon.svg`, `og.jpg`, `llms.txt`, `robots.txt`, `.nojekyll`: generated build output. The `deploy` job publishes every tracked file of `main` except the repository's own files (`.github/`, `.agents/`, `scripts/`, `AGENTS.md`, `README.md`, `.gitignore`) at https://frontierdsgn.github.io/frontier-design-entwurf/.
-- `README.md`: German; also written by the source repository's preview publish step.
+- `README.md`: German, with the preview notice; maintained here, never written by a publish.
 - `LICENSE` (MIT, code), `LICENSE-content` (CC BY 4.0, site texts and images), `NOTICE` (which files each covers, and the bundled third-party works with their own licences: OFL fonts, GSAP, Lenis, three.js). They are published with the site, because the notices must accompany the bundled code.
 - `scripts/gate`: the gate. `scripts/install-gitleaks`: installs the pinned gitleaks it needs.
 - `.github/workflows/gate.yml`: CI job `gate`, and job `deploy` (needs `gate`; pushes to `main` and manual runs on `main` only). `.agents/setup`: orb setup.
@@ -19,6 +19,7 @@ Small commits straight to `main` with Conventional Commits subjects; run `script
 
 ## Rules
 - The build comes from the private repository `frontierdsgn/frontier-design` (branch `entwurf-preview`, `ENTWURF=1 npm run build` in `site/`). Fix site content there and republish; do not hand-edit generated files here, they are overwritten by the next publish.
+- A publish replaces the generated build output with the new `site/dist/` and leaves the repository's own files (`README.md`, `AGENTS.md`, `LICENSE`, `LICENSE-content`, `NOTICE`, `.github/`, `.agents/`, `scripts/`, `.gitignore`) as they are. Its commit subject names the source commit, as in `Entwurf: design preview build of frontier-design (<commit>)`.
 - This is a draft: every page keeps `noindex,nofollow`, `robots.txt` keeps `Disallow: /`, and offers, prices and the Impressum stay placeholders. Never add real personal data. The gate checks the first two.
 - When a build adds, removes or swaps a bundled font or JavaScript library, update `NOTICE` in the same commit.
 - References must be relative: the site is served under `/frontier-design-entwurf/`, so root-relative paths break.

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Orb setup: idempotent. Installs what scripts/gate needs and reports credentials without printing them.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+scripts/install-gitleaks "$HOME/.local/bin"
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) echo "setup: add ~/.local/bin to PATH to run scripts/gate" ;; esac
+
+if gh auth status >/dev/null 2>&1; then echo "setup: gh is authenticated"; else echo "setup: gh is not authenticated"; fi
+case "$(git config user.email || true)" in
+	*@users.noreply.github.com) echo "setup: git user.email is a GitHub noreply address" ;;
+	*) echo "setup: git user.email is not a GitHub noreply address; set one before pushing (public repository)" ;;
+esac

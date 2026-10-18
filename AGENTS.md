@@ -1,10 +1,11 @@
 ## Profile
 - Purpose: GitHub Pages host for the generated draft (Entwurf) preview build of the frontier-design website
-- Stage: prototype (repository standard 2026-10-17)
+- Stage: prototype (repository standard 2026-10-18)
 - Gate: `scripts/gate` (CI job `gate`)
 - Landing: direct to main after a green gate; agents land: yes
 - Release: none (GitHub Pages serves `main` as pushed); agents release: no
 - Outside issues and PRs: agents triage; outside PRs merge: owner approves
+- Sensitive paths: `.github/` (CI and Pages deployment), `.agents/` (orb setup), `scripts/` (the gate and its gitleaks installer), `AGENTS.md` (agent policy)
 
 Deviation from the standard: no `LICENSE` yet in this public repository; the owner decides in issue #1.
 
@@ -15,7 +16,7 @@ Deviation from the standard: no `LICENSE` yet in this public repository; the own
 - `.github/workflows/gate.yml`: CI job `gate`. `.agents/setup`: orb setup.
 
 ## Landing (prototype)
-Small commits straight to `main` with Conventional Commits subjects; run `scripts/gate` first and push at the end of every session. Commit with a GitHub noreply address (public repository).
+Small commits straight to `main` with Conventional Commits subjects; run `scripts/gate` first and push at the end of every session. Commit with a GitHub noreply address (public repository). A change to a sensitive path gets an independent review of its diff (another agent or the owner) before it is pushed, with the verdict recorded in the commit body.
 
 ## Rules
 - The build comes from the private repository `frontierdsgn/frontier-design` (branch `entwurf-preview`, `ENTWURF=1 npm run build` in `site/`). Fix site content there and republish; do not hand-edit generated files here, they are overwritten by the next publish.

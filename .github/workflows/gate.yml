@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,3 +23,40 @@ jobs:
           persist-credentials: false
       - run: scripts/install-gitleaks "$RUNNER_TEMP/bin" && echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
       - run: scripts/gate
+
+  # Publishes the site files of a main commit whose gate passed. Never runs on pull_request.
+  deploy:
+    needs: gate
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Assemble the site files
+        # Everything tracked except the repository's own files, so new files from the build are published.
+        run: |
+          mkdir "$RUNNER_TEMP/site"
+          git ls-files -z -- . ':(exclude).github' ':(exclude).agents' ':(exclude)scripts' \
+            ':(exclude)AGENTS.md' ':(exclude)README.md' ':(exclude).gitignore' |
+            xargs -0 cp --parents -t "$RUNNER_TEMP/site"
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: ${{ runner.temp }}/site
+          include-hidden-files: true # keeps .nojekyll
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+      - run: echo "Deployed \`$GITHUB_SHA\` to $PAGE_URL" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}

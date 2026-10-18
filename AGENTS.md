@@ -18,7 +18,7 @@
 Small commits straight to `main` with Conventional Commits subjects; run `scripts/gate` first and push at the end of every session. Commit with a GitHub noreply address (public repository). A change to a sensitive path gets an independent review of its diff (another agent or the owner) before it is pushed, with the verdict recorded in the commit body.
 
 ## Rules
-- The build comes from the private repository `frontierdsgn/frontier-design` (branch `entwurf-preview`, `ENTWURF=1 npm run build` in `site/`). Fix site content there and republish; do not hand-edit generated files here, they are overwritten by the next publish.
+- The build comes from the private repository `frontierdsgn/frontier-design` (branch `main`, `ENTWURF=1 npm run build` in `site/`; the publish commands are in its README section "Draft preview"). Fix site content there and republish; do not hand-edit generated files here, they are overwritten by the next publish.
 - A publish replaces the generated build output with the new `site/dist/` and leaves the repository's own files (`README.md`, `AGENTS.md`, `LICENSE`, `LICENSE-content`, `NOTICE`, `.github/`, `.agents/`, `scripts/`, `.gitignore`) as they are. Its commit subject names the source commit, as in `Entwurf: design preview build of frontier-design (<commit>)`.
 - This is a draft: every page keeps `noindex,nofollow`, `robots.txt` keeps `Disallow: /`, and offers, prices and the Impressum stay placeholders. Never add real personal data. The gate checks the first two.
 - When a build adds, removes or swaps a bundled font or JavaScript library, update `NOTICE` in the same commit.

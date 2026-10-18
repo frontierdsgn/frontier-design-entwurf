@@ -12,7 +12,7 @@ Dieses Repository enthält nur den fertig gebauten Stand der Website und stellt 
 
 Vorschau: https://frontierdsgn.github.io/frontier-design-entwurf/
 
-Gebaut aus dem privaten Repo `frontier-design`, Branch `entwurf-preview`, mit `ENTWURF=1 npm run build` in `site/`; der gebaute Commit steht in der Nachricht des jeweiligen Build-Commits (`git log`).
+Gebaut aus dem privaten Repo `frontier-design`, Branch `main`, mit `ENTWURF=1 npm run build` in `site/`; die Befehle zum Veröffentlichen stehen dort im README-Abschnitt „Draft preview“. Der gebaute Commit steht in der Nachricht des jeweiligen Build-Commits (`git log`).
 
 ## Lokal ansehen
 

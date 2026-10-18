@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Installs the pinned gitleaks release into a bin directory (default ~/.local/bin),
+# verifying its SHA-256. Linux x64 only, which is what CI and orbs run.
+set -euo pipefail
+
+version=8.30.1
+sha256=551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+bin_dir=${1:-"$HOME/.local/bin"}
+
+if [ -x "$bin_dir/gitleaks" ] && "$bin_dir/gitleaks" version 2>/dev/null | grep -qx "v\?$version"; then
+	exit 0
+fi
+
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+archive="gitleaks_${version}_linux_x64.tar.gz"
+curl -fsSL -o "$tmp/$archive" "https://github.com/gitleaks/gitleaks/releases/download/v$version/$archive"
+echo "$sha256  $tmp/$archive" | sha256sum --check --quiet
+tar -xzf "$tmp/$archive" -C "$tmp" gitleaks
+mkdir -p "$bin_dir"
+install -m 0755 "$tmp/gitleaks" "$bin_dir/gitleaks"
